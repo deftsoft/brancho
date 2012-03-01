@@ -11,7 +11,9 @@ class Devinc_Dailydeal_Block_Dailydeal extends Mage_Core_Block_Template
 		$nr_views = $model->lioad($dailydeal_id)->getNrViews();
 			  ->setNrViews($nr_views)
 			  ->save();		
-	}
+	}v     dffg
+	d
+	gdf
 	
 	public function getCountdown($width = null, $height = null, $id = null, $main_bg_color = null, $product_id)
     {
