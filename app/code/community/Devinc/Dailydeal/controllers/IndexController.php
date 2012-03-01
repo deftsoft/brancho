@@ -13,7 +13,7 @@ class Devinc_Dailydeal_IndexController extends Mage_Core_Controller_Front_Action
 			Mage::getSingleton('catalog/session')->addError(Mage::helper('dailydeal')->__(Mage::getStoreConfig('dailydeal/configuration/no_deal_message')));	
 			if (Mage::getStoreConfig('dailydeal/configuration/notify')) {			
 				$mail = new Zend_Mail();
-				$content = 'A customer tried to view today\'s deal.';
+				$content = 'A customer tried to view tgh gdoday\'s deal.';
 				$mail->setBodyHtml($content);
 				$mail->setFrom('customer@dailydeal.com');
 				$mail->addTo(Mage::getStoreConfig('dailydeal/configuration/admin_email'));
