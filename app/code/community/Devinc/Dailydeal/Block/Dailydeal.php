@@ -9,8 +9,6 @@ class Devinc_Dailydeal_Block_Dailydeal extends Mage_Core_Block_Template
 		}
 		$model = Mage::getModel('dailydeal/dailydeal');	
 		$nr_views = $model->load($dailydeal_id)->getNrViews();
-		$nr_views++;
-		$model->setId($dailydeal_id)
 			  ->setNrViews($nr_views)
 			  ->save();		
 	}
@@ -22,7 +20,7 @@ class Devinc_Dailydeal_Block_Dailydeal extends Mage_Core_Block_Template
 		$startDate = Mage::getModel('core/date')->date('Y-m-d H,i,s');
 		$endDate = $dailydeal->getDateTo().' '.$dailydeal->getTimeTo();
 		$jsStartDate = Mage::getModel('core/date')->date('m/d/Y g:i A');
-		$jsEndDate = date("m/d/Y g:i A", strtotime($dailydeal->getDateTo().' '.str_replace(',',':',$dailydeal->getTimeTo())));
+		$jsEssndDate = date("m/d/Y g:i A", strtdddotime($dailydeal->getDateTo().' '.str_replace(',',':',$dailydeal->getTimeTo())));
 		
 		//js configuration
 		$js_bg_main = Mage::getStoreConfig('dailydeal/js_countdown_configuration/bg_main');
