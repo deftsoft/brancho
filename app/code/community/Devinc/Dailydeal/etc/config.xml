@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Devinc_Dailydeal>
+            <version>0.1.0</version>
+        </Devinc_Dailydeal>
+    </modules>
+    <frontend>
+        <routers>
+            <dailydeal>
+                <use>standard</use>
+                <args>
+                    <module>Devinc_Dailydeal</module>
+                    <frontName>dailydeal</frontName>
+                </args>
+            </dailydeal>
+        </routers>
+        <layout>
+            <updates>
+                <dailydeal>
+                    <file>dailydeal.xml</file>
+                </dailydeal>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+			<dailydeal>
+				<use>admin</use>
+				<args>
+					<module>Devinc_Dailydeal</module>
+					<frontName>dailydeal</frontName>
+				</args>
+			</dailydeal>
+        </routers>
+    </admin>
+    <adminhtml>
+		<menu>
+			<dailydeal module="dailydeal">
+				<title>Daily Deal</title>
+				<sort_order>71</sort_order>               
+				<children>
+					<add module="dailydeal">
+						<title>Add Deal</title>
+						<sort_order>0</sort_order>
+						<action>dailydeal/adminhtml_dailydeal/new/</action>
+					</add>
+					<items module="dailydeal">
+						<title>Manage Deals</title>
+						<sort_order>1</sort_order>
+						<action>dailydeal/adminhtml_dailydeal/</action>
+					</items>
+					<configuration module="dailydeal">
+						<title>Settings</title>
+						<sort_order>2</sort_order>
+						<action>adminhtml/system_config/edit/section/dailydeal</action>
+					</configuration>
+				</children>
+			</dailydeal>
+		</menu>
+		<acl>
+			<resources>
+				<!-- <all>
+					<title>Allow Everything</title>
+				</all> -->
+				<admin>
+					<children>
+						<dailydeal translate="title" module="dailydeal">
+							<title>Daily Deal Menu</title>
+							<sort_order>50</sort_order>  							 
+							<children>
+								<add translate="title" module="dailydeal">
+									<title>Add Deal</title>
+									<sort_order>0</sort_order>
+								</add>
+								<items translate="title" module="dailydeal">
+									<title>Manage Deals</title>
+									<sort_order>1</sort_order>
+								</items>
+								<configuration translate="title" module="dailydeal">
+									<title>Settings</title>
+									<sort_order>2</sort_order>
+								</configuration>
+							</children>
+						</dailydeal>
+						<system>
+							<children>
+								<config>
+									<children>
+										<dailydeal translate="title" module="dailydeal">
+											<title>Daily Deal Settings</title>
+											<sort_order>50</sort_order>
+										</dailydeal>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>		
+		</acl>
+		
+		<layout>
+			<updates>
+				<dailydeal>
+					<file>dailydeal.xml</file>
+				</dailydeal>
+			</updates>
+		</layout>
+    </adminhtml>   
+    <global>
+		<events> 
+		  <sales_quote_item_qty_set_after> 
+			<observers> 
+			  <dailydeal_observer> 
+				<type>singleton</type> 
+				<class>dailydeal/observer</class> 
+				<method>refreshCart</method> 
+			  </dailydeal_observer> 
+			</observers> 
+		  </sales_quote_item_qty_set_after> 		 
+		  <sales_order_place_after> 
+			<observers> 
+			  <dailydeal_observer> 
+				<type>singleton</type> 
+				<class>dailydeal/observer</class> 
+				<method>updateDealQty</method> 
+			  </dailydeal_observer> 
+			</observers> 
+		  </sales_order_place_after> 
+		</events> 
+        <models>
+            <dailydeal>
+                <class>Devinc_Dailydeal_Model</class>
+                <resourceModel>dailydeal_mysql4</resourceModel>
+            </dailydeal>
+            <dailydeal_mysql4>
+                <class>Devinc_Dailydeal_Model_Mysql4</class>
+                <entities>
+                    <dailydeal>
+                        <table>dailydeal</table>
+                    </dailydeal>
+                </entities>
+            </dailydeal_mysql4>
+			<catalog>
+				<rewrite>
+						<product>Devinc_Dailydeal_Model_Catalog_Product</product>   
+				</rewrite>
+			</catalog>
+        </models>
+        <resources>
+            <dailydeal_setup>
+                <setup>
+                    <module>Devinc_Dailydeal</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </dailydeal_setup>
+            <dailydeal_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </dailydeal_write>
+            <dailydeal_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </dailydeal_read>
+        </resources>
+        <blocks>
+            <dailydeal>
+                <class>Devinc_Dailydeal_Block</class>
+            </dailydeal>
+        </blocks>
+        <helpers>
+            <dailydeal>
+                <class>Devinc_Dailydeal_Helper</class>
+            </dailydeal>
+        </helpers>
+    </global>
+</config>

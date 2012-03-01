@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+    <default>
+		<reference name="head">
+			<action method="addCss"><stylesheet>dailydeal/css/dailydeal.css</stylesheet></action>
+            <action method="addJs"><script>dailydeal/swfobject.js</script></action>
+        </reference>
+        <reference name="top.links">
+            <action method="addLink" ifconfig="dailydeal/configuration/header_links" translate="label title" module="customer"><label>Daily Deal</label><url>dailydeal/</url><title>Daily Deal</title><position>40</position></action>
+        </reference> 
+		<reference name="right">
+            <block type="dailydeal/dailydeal" name="dailydeal_sidebar_right" template="dailydeal/sidebar_right.phtml" before="-"/>
+        </reference>
+		<reference name="left">
+            <block type="dailydeal/dailydeal" name="dailydeal_sidebar_left" template="dailydeal/sidebar_left.phtml" before="-"/>
+        </reference>
+    </default>
+	
+	<catalog_product_view>
+        <reference name="alert.urls"> 
+			<block type="dailydeal/dailydeal" name="dailydeal" template="dailydeal/dailydeal.phtml" />   
+        </reference>
+    </catalog_product_view>
+	
+	<dailydeal_checkout_cart_index>
+		<update handle="checkout_cart_index"/>            
+	</dailydeal_checkout_cart_index>
+	
+	<dailydeal_checkout_onepage_index>
+		<update handle="checkout_onepage_index"/>            
+	</dailydeal_checkout_onepage_index>
+	
+	
+</layout> 

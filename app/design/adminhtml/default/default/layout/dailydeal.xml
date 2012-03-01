@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <dailydeal_adminhtml_dailydeal_index>
+        <reference name="content">
+            <block type="dailydeal/adminhtml_dailydeal" name="dailydeal" />
+        </reference>
+    </dailydeal_adminhtml_dailydeal_index>
+</layout>

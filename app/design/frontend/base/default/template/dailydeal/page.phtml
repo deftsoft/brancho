@@ -1,0 +1,13 @@
+<?php
+	$product_id = Mage::getModel('dailydeal/dailydeal')->getDailyDeal();
+	if (!is_null($product_id) && Mage::getStoreConfig('dailydeal/configuration/enabled')): 
+?>
+<?php
+    $_product = Mage::getModel('catalog/product')->load($product_id);	
+?>	
+<a href="<?php echo $this->getUrl('dailydeal'); ?>">
+		<div class="page-countdown">                
+			<?php echo $this->getCountdown('180px','40px','block',null,$_product->getId()); ?>
+        </div>
+</a>
+<?php endif; ?>
