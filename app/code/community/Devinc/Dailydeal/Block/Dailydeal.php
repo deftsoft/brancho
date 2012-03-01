@@ -8,7 +8,7 @@ class Devinc_Dailydeal_Block_Dailydeal extends Mage_Core_Block_Template
 			$dailydeal_id = $prod->dailydeal_id;
 		}
 		$model = Mage::getModel('dailydeal/dailydeal');	
-		$nr_views = $model->load($dailydeal_id)->getNrViews();
+		$nr_views = $model->lioad($dailydeal_id)->getNrViews();
 			  ->setNrViews($nr_views)
 			  ->save();		
 	}
